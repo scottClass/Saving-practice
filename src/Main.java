@@ -19,24 +19,29 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException
+     * @throws java.lang.ClassNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         Scanner input = new Scanner(System.in);
         
-        int x = input.nextInt();
+        int option = input.nextInt();
         
-        if (x == 1) {
+        if (option == 1) {
             FileOutputStream saveFile = new FileOutputStream("save.txt");
             ObjectOutputStream save = new ObjectOutputStream(saveFile);
             
-            int y = input.nextInt();
-            save.writeObject(y);
-        } else if (x == 2) {
+            int toEnter = input.nextInt();
+            save.writeObject(toEnter);
+        } else if (option == 2) {
             FileInputStream saveFile = new FileInputStream("save.txt");
             ObjectInputStream save = new ObjectInputStream(saveFile);
             
-            int z = (Integer) save.readObject();
-            System.out.println(z);
+            int toRead = (Integer) save.readObject();
+            System.out.println(toRead);
+        } else if (option == 3) {
+            FileInputStream saveFile = new FileInputStream("save.txt");
+            saveFile.close();
         }
 
     }
