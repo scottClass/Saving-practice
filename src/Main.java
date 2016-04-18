@@ -24,23 +24,23 @@ public class Main {
      */
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         Scanner input = new Scanner(System.in);
-        
+
         int option = input.nextInt();
-        
+
         if (option == 1) {
             FileOutputStream saveFile = new FileOutputStream("save.txt");
             ObjectOutputStream save = new ObjectOutputStream(saveFile);
-            
+
             int toEnter = input.nextInt();
             save.writeObject(toEnter);
         } else if (option == 2) {
             FileInputStream saveFile = new FileInputStream("save.txt");
             ObjectInputStream save = new ObjectInputStream(saveFile);
-            
+
             int toRead = (Integer) save.readObject();
             System.out.println(toRead);
         } else if (option == 3) {
-            FileInputStream saveFile = new FileInputStream("save.txt");
+            FileOutputStream saveFile = new FileOutputStream("save.txt");
             saveFile.close();
         }
 
